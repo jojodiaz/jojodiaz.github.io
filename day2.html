@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 2 — Exploring std::expected</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #4f46e5, #3b82f6);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    nav a {
+      margin: 0 1rem;
+      font-weight: bold;
+      color: #e0e7ff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #fff; }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    main h2 { margin-bottom: 1rem; color: #4f46e5; }
+    main p { margin-bottom: 1rem; font-size: 1.1rem; }
+    pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+    }
+    code { font-family: "Fira Code", monospace; }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #1e293b;
+      color: #cbd5e1;
+      margin-top: 3rem;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Jose Diaz — Day 2</h1>
+    <p>Learning Modern C++</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="day1.html">Day 1</a>
+      <a href="day2.html">Day 2</a>
+      <a href="day3.html">Day 3</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Exploring <code>std::expected</code></h2>
+    <p>
+      So let’s talk about <code>std::expected</code>. I learned about this C++23 change a couple days ago.
+    </p>
+
+    <p>It takes the form of either:</p>
+
+    <pre><code>template&lt;class T, class E&gt; class expected;
+
+template&lt;class T, class E&gt; requires std::is_void_v&lt;T&gt; class expected;</code></pre>
+
+    <p>
+      Now this was my first time seeing the <code>requires</code> keyword (C++20), which probably
+      means I haven’t spent enough time really learning C++ as I should. But here is a quick synopsis:
+    </p>
+
+    <p>
+      The <code>requires</code> keyword enforces certain characteristics upon a template class
+      instantiation or a function.
+    </p>
+
+    <p>
+      To really understand this, we have to understand <strong>constraints</strong> and
+      <strong>concepts</strong> (C++20).  
+    </p>
+    <ul>
+      <li><strong>Constraints</strong> are the specification of valid template arguments, aka what follows the <code>requires</code> keyword.</li>
+      <li><strong>Concepts</strong> are named sets of these requirements.</li>
+    </ul>
+
+    <p>
+      This is a high-level explanation, and I should really do a deeper dive into the
+      metaprogramming paradigm of C++ in general. But this is enough to excuse myself
+      and further explain <code>std::expected</code>.
+    </p>
+
+    <p>
+      <code>std::expected</code> is a way to handle exceptions in a more type-safe and explicit manner.
+    </p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Jose Diaz — Built with ❤️ for GitHub Pages</p>
+  </footer>
+</body>
+</html>
+
