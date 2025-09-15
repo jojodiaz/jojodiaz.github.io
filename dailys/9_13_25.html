@@ -4,72 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day 2 — Exploring std::expected</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f4f9;
-      color: #333;
-      line-height: 1.6;
-    }
-    header {
-      background: linear-gradient(135deg, #4f46e5, #3b82f6);
-      color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-    nav a {
-      margin: 0 1rem;
-      font-weight: bold;
-      color: #e0e7ff;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #fff; }
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-      animation: fadeIn 0.8s ease-in-out;
-    }
-    main h2 { margin-bottom: 1rem; color: #4f46e5; }
-    main p { margin-bottom: 1rem; font-size: 1.1rem; }
-    pre {
-      background: #1e293b;
-      color: #e2e8f0;
-      padding: 1rem;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin-bottom: 1.5rem;
-    }
-    code { font-family: "Fira Code", monospace; }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #1e293b;
-      color: #cbd5e1;
-      margin-top: 3rem;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">  
 </head>
 <body>
   <header>
-    <h1>Jose Diaz — Day 2</h1>
-    <p>Learning Modern C++</p>
+    <h1>Modern C++ Feature Discussion</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="day1.html">Day 1</a>
-      <a href="day2.html">Day 2</a>
-      <a href="day3.html">Day 3</a>
+      <a href="../index.html">Home</a>
     </nav>
   </header>
 
@@ -112,6 +53,23 @@ template&lt;class T, class E&gt; requires std::is_void_v&lt;T&gt; class expected
 
     <p>
       <code>std::expected</code> is a way to handle exceptions in a more type-safe and explicit manner.
+    </p>
+    <p>
+      For example, when we construct an <code>std::expected</code> value, we are allowed to either pass the expected type, 
+      or an <code>std::unexpected</code> instance containing the unexpected type. It's weird. But for example
+    </p>
+    <p>
+      <pre>
+        <code>
+          std::expected&ltint, std::string&gt someParsingAction() {
+              if(success) {
+                return 0;
+              }
+              else
+                return std::unexpected("[someObject::someParsingAction] Failed due to ...");
+            }
+        </code>
+      </pre>
     </p>
   </main>
 
